@@ -2,15 +2,13 @@
 clear
 
 # Variables globales
-classpath=""
 
 # definicion de funciones
 func_encabezado(){
 	echo '-----------------------------------'
 	echo '| CREANDO UN JAVA PROYECT SENCILLO|'
-	echo '| (  ^o^)b        by Me            '
+	echo '| (  ^o^)b        by Kevin         '
 	echo '-----------------------------------'
-	echo
 }
 
 func_creandoManifestoSencillo(){
@@ -34,19 +32,12 @@ func_carpetas(){
 	func_creandoManifestoSencillo $1/META-INF/Manifest.mf
 }
 
-func_creandoArchivoClases(){
-	cd src
-	ls -R > ../list_class
-	cd ..
-	cat list_class
-}
-
 # Empieza el programa
 func_encabezado
 if [ $# -eq 1 ]; then
 	func_carpetas $1
 else
-	echo "No puso nombre al proyecto"
+	echo "(/ >_<)/ No puso nombre al proyecto"	
 fi
 # fun_carpetas
 # fun_creandoArchivoClases
