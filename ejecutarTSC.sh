@@ -32,90 +32,70 @@ func_TSC(){
 	then
 		echo "  Sí, sí existe."
 		echo "Compilando $1"
-		#---------------
-		# usar un case 
-		# #---------------
-		# if [ $2 = "ES3" ]; then
-		# 	ejecutable="$ejecutable -t 'ES3'"
-		# fi
-		# if [ $2 = "ES2017" ]; then
-		# 	ejecutable="$ejecutable -t 'es2017'"
-		# fi
-		# echo "$ejecutable $1"
-		#$ejecutable $1
-		# $("$ejecutable  --pretty ") $1 #No funciono
 		case $2 in
 			ES3)
-				#echo -n "ES3"
-				echo "           en version $2"
-				echo "$ejecutable $1"
-				$ejecutable $1
+				echo "    en version $2"
+				ejecutable="$ejecutable $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
 			ES5)
-				#echo -n "ES5"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es5'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+				echo "    en version $2"
+				 #--target puede llevar 'es5' pero solo si se ejecuta directamente en la terminal
+				ejecutable="$ejecutable --target es5 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
 			ES6)
-				#echo -n "ES5"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es6'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es6 $1"
+				echo ">> $ejecutable $1 <<"
+				$ejecutable
 			;;
-			"ES2015")
-				# echo -n "ES2015"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2015'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2015)
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es2015 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
-			"ES2016")
-				# echo -n "ES2016"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2016'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2016)
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es2016 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
-			"ES2017")
-				# echo -n "ES2017"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2017'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2017)
+				echo "    en version $2"				
+				ejecutable="$ejecutable --target es2017 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
-			"ES2018")
-				# echo -n "ES2018"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2018'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2018)
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es2018 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
-			"ES2019")
-				# echo -n "ES2019"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2019'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2019)
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es2019 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
-			"ES2020")
-				# echo -n "ES2020"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'es2020'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+			ES2020)
+				echo "    en version $2"
+				ejecutable="$ejecutable --target es2020 $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;
 			ESNEXT)
-				# echo -n "ESNEXT"
-				echo "           en version $2"
-				ejecutable="$ejecutable --target 'esnext'"
-				echo "$ejecutable $1"
-				$ejecutable $1
+				echo "    en version $2"
+				ejecutable="$ejecutable --target esnext $1"
+				echo ">> $ejecutable <<"
+				$ejecutable
 			;;			
 			*)
-				echo "            en version -desconocida-"
+				echo "    en version -desconocida-"
 				func_mensajeTargets
 			;;
 		esac
