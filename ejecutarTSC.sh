@@ -95,7 +95,7 @@ func_TSC(){
 				$ejecutable
 			;;			
 			*)
-				echo "    en version -desconocida-"
+				echo "    en version $2 --> -desconocida-"
 				func_mensajeTargets
 			;;
 		esac
