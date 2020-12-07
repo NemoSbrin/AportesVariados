@@ -29,7 +29,6 @@ func_mensaje_generate(){
 
 
 
-
 func_NG(){
 	ejecutable="$(pwd)/node_modules/.bin/ng"
 	echo "Vefificando si existe $ejecutable"
@@ -37,24 +36,23 @@ func_NG(){
 	if [ -f $ejecutable ];
 	then
 		echo "  Sí, sí existe."
-		echo "Compilando <comando> $1 [opcion(es)] $2"
+		echo "Compilando <comando> $1"
 		case $1 in
 			"version")
 				echo "    <comando> version"
 				ejecutable="$ejecutable version"
 				echo ">> $ejecutable <<"
-				#$ejecutable
+				$ejecutable
 			;;
 			"nuevo")
 				echo "    <comando> new $2"
 				ejecutable="$ejecutable new $2"
 				echo ">> $ejecutable <<"
-				#$ejecutable
+				$ejecutable
 			;;
 			"generar")
 				echo "    <comando> generate"
-				echo ">> $ejecutable <<"
-				func_NG_generate $ejecutable $3
+				func_NG_generate $ejecutable $2 $3
 			;;	
 			*)
 				echo "    <comando> $2 --> -desconocida-"
@@ -69,101 +67,102 @@ func_NG(){
 }
 
 func_NG_generate(){
+	echo "  Dentro del Comando  - generate -"
 	ejecutable=$1
 	case $2 in
 		"generar-appShell")
-			echo "    <comando> generate appShell $2"
-			ejecutable="$ejecutable generate appShell $2"
+			echo "    <comando> generate appShell $3"
+			ejecutable="$ejecutable generate appShell $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;			
 		"generar-application")
-			echo "    <comando> generate application $2"
-			ejecutable="$ejecutable generate application $2"
+			echo "    <comando> generate application $3"
+			ejecutable="$ejecutable generate application $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;    		
 		"generar-class")
-			echo "    <comando> generate class $2"
-			ejecutable="$ejecutable generate class $2"
+			echo "    <comando> generate class $3"
+			ejecutable="$ejecutable generate class $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-component")
-			echo "    <comando> generate component $2"
-			ejecutable="$ejecutable generate component $2"
+			echo "    <comando> generate component $3"
+			ejecutable="$ejecutable generate component $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-directive")
-			echo "    <comando> generate directive $2"
-			ejecutable="$ejecutable generate directive $2"
+			echo "    <comando> generate directive $3"
+			ejecutable="$ejecutable generate directive $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;			 
 		"generar-enum")
-			echo "    <comando> generate enum $2"
-			ejecutable="$ejecutable generate enum $2"
+			echo "    <comando> generate enum $3"
+			ejecutable="$ejecutable generate enum $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-guard")
-			echo "    <comando> generate guard $2"
-			ejecutable="$ejecutable generate guard $2"
+			echo "    <comando> generate guard $3"
+			ejecutable="$ejecutable generate guard $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-interceptor")
-			echo "    <comando> generate interceptor $2"
-			ejecutable="$ejecutable generate interceptor $2"
+			echo "    <comando> generate interceptor $3"
+			ejecutable="$ejecutable generate interceptor $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-interface")
-			echo "    <comando> generate interface $2"
-			ejecutable="$ejecutable generate interface $2"
+			echo "    <comando> generate interface $3"
+			ejecutable="$ejecutable generate interface $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-library")
-			echo "    <comando> generate library $2"
-			ejecutable="$ejecutable generate library $2"
+			echo "    <comando> generate library $3"
+			ejecutable="$ejecutable generate library $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-module")
-			echo "    <comando> generate module $2"
-			ejecutable="$ejecutable generate module $2"
+			echo "    <comando> generate module $3"
+			ejecutable="$ejecutable generate module $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-pipe")
-			echo "    <comando> generate pipe $2"
-			ejecutable="$ejecutable generate pipe $2"
+			echo "    <comando> generate pipe $3"
+			ejecutable="$ejecutable generate pipe $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-service")
-			echo "    <comando> generate service $2"
-			ejecutable="$ejecutable generate service $2"
+			echo "    <comando> generate service $3"
+			ejecutable="$ejecutable generate service $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-serviceWorker")
-			echo "    <comando> generate serviceWorker $2"
-			ejecutable="$ejecutable generate serviceWorker $2"
+			echo "    <comando> generate serviceWorker $3"
+			ejecutable="$ejecutable generate serviceWorker $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;
 		"generar-webWorker")
-			echo "    <comando> generate webWorker $2"
-			ejecutable="$ejecutable generate webWorker $2"
+			echo "    <comando> generate webWorker $3"
+			ejecutable="$ejecutable generate webWorker $3"
 			echo ">> $ejecutable <<"
-			#$ejecutable
+			$ejecutable
 		;;		
 		*)
 			echo "    <comando> $2 --> -desconocida-"
-			func_mensaje
+			func_mensaje_generate
 		;;
 	esac
 }
@@ -171,7 +170,7 @@ func_NG_generate(){
 
 func_encabezado
 if [ $# -ge 1 ]; then
-	func_NG $#
+	func_NG $1 $2 $3
 else
 	echo "  (/ ò_ó)/ Se debe ingresar al menos 1 parámetro"
 	func_mensaje
