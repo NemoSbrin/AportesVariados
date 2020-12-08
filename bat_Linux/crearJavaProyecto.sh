@@ -1,13 +1,20 @@
 #!/bin/bash
 clear
 
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ::                autor:   Kevin S. Palacios C.                        ::
+# ::                                                                     ::
+# :: fecha de creacion: 2020-12-04     || version: 1.0.0                 ::
+# :: fecha de modificacion: 2020-12-08 || Quien modifica: Kevin Palacios ::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 # Variables globales
 
 # definicion de funciones
 func_encabezado(){
 	echo '-----------------------------------'
-	echo '| CREANDO UN JAVA PROYECT SENCILLO|'
-	echo '| (  ^o^)b        by Kevin         '
+	echo '| CREANDO UN JAVA PROYECT SENCILLO |'
+	echo '| (  ^o^)b        by Kevin         |'
 	echo '-----------------------------------'
 }
 
@@ -30,6 +37,7 @@ func_carpetas(){
 	mkdir $1/META-INF
 	echo "   Manifest.mf"
 	func_creandoManifestoSencillo $1/META-INF/Manifest.mf
+	echo " ----------------------"
 	echo "  d( ^^ )b Ya esta listo"
 }
 
@@ -38,6 +46,7 @@ func_encabezado
 if [ $# -eq 1 ]; then
 	func_carpetas $1
 else
+	echo " ----------------------"
 	echo "  (/ ò_ó)/ No puso nombre al proyecto"	
 fi
 # fun_carpetas

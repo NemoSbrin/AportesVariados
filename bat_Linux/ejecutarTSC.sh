@@ -1,13 +1,21 @@
 #!/bin/bash
 clear
 
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ::                autor:   Kevin S. Palacios C.                        ::
+# ::                                                                     ::
+# :: fecha de creacion: 2020-12-04     || version: 1.0.0                 ::
+# :: fecha de modificacion: 2020-12-08 || Quien modifica: Kevin Palacios ::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 # Variables globales
 
 # definicion de funciones
 func_encabezado(){
 	echo '--------------------------------'
 	echo '| EJECUTANDO TSC DESDE CONSOLA |'
-	echo '| (  ^o^)b        by Kevin      '
+	echo '| (  ^o^)b        by Kevin     |'
 	echo '--------------------------------'
 }
 
@@ -99,10 +107,12 @@ func_TSC(){
 				func_mensajeTargets
 			;;
 		esac
+		echo " ----------------------"
 		echo "  d( ^^ )b Fin del programa"
 	else
+		echo " ----------------------"
 		echo "  No, no existe"
-		echo "  orz Revisa la ruta"
+		echo "  Revisa la ruta orz"
 	fi
 }
 
@@ -110,6 +120,7 @@ func_encabezado
 if [ $# -eq 2 ]; then
 	func_TSC $1 $2
 else
+	echo " ----------------------"
 	echo "  (/ ò_ó)/ No puso ni nombre del archivo o target"
 	func_mensajeTargets
 fi

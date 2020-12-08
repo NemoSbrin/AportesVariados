@@ -1,6 +1,13 @@
 #!/bin/bash
 clear
 
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ::                autor:   Kevin S. Palacios C.                        ::
+# ::                                                                     ::
+# :: fecha de creacion: 2020-12-04     || version: 1.0.0                 ::
+# :: fecha de modificacion: 2020-12-08 || Quien modifica: Kevin Palacios ::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 # Variables globales
 
 # definicion de funciones
@@ -59,10 +66,12 @@ func_NG(){
 				func_mensaje
 			;;
 		esac
+		echo " ----------------------"
 		echo "  d( ^^ )b Fin del programa"
 	else
+		echo " ----------------------"
 		echo "  No, no existe"
-		echo "  orz Revisa la ruta"
+		echo "  Revisa la ruta orz"
 	fi
 }
 
@@ -172,6 +181,7 @@ func_encabezado
 if [ $# -ge 1 ]; then
 	func_NG $1 $2 $3
 else
+	echo " ----------------------"
 	echo "  (/ ò_ó)/ Se debe ingresar al menos 1 parámetro"
 	func_mensaje
 fi
