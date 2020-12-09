@@ -33,15 +33,18 @@ func_mensaje_PathDeCarpetaVacio(){
 }
 
 func_creandoCarpetas(){
-	echo "cd $1"
-	echo "cantidad de capetas $2"
+	# echo "    cd $1"
+	# echo "  cantidad de capetas $2"
+	echo "  Creando $2 carpetas en $1"
 	cont=1
 	#a futuro poner el nombre de la carpeta
 	while [ $2 -ge $cont ]; do
 		if [ $cont -le 9 ]; then
-			echo "mkdir cap0$cont"
+			# echo "    mkdir cap0$cont"
+			mkdir cap0$cont
 		else
-			echo "mkdir cap$cont"
+			# echo "    mkdir cap$cont"
+			mkdir cap$cont
 		fi
 		cont=$((cont + 1))
 	done
