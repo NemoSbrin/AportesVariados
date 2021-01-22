@@ -5,7 +5,7 @@ clear
 # ::                autor:   Kevin S. Palacios C.                        ::
 # ::                                                                     ::
 # :: fecha de creacion: 2020-12-09     || version: 1.0.0                 ::
-# :: fecha de modificacion: 2020-12-09 || Quien modifica: Kevin Palacios ::
+# :: fecha de modificacion: 2021-01-21 || Quien modifica: Kevin Palacios ::
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Variables globales
