@@ -50,8 +50,30 @@ func_creandoCarpetas(){
 	done
 }
 
+#No existe el return, lo que se hace es imprimir el valor que se va a enviar
+func_hayEspacios(){
+	# echo "  <( '_')7 Verificando ruta actual: `pwd`"
+	index=$((0))
+	# echo "index: $index"
+	for v in `pwd`; do
+		# echo "v: $v"
+    	index=$((index + 1))
+    	# echo "index dentro del for: $index"
+	done
+	# echo "cantidad de espacios en blanco: $index"
+	echo $index
+}
+
+func_reemplazandoEspacios(){
+	echo "nueva ruta : $1"
+	aux= `sed -i '/s \\ ' {print $1}`
+	echo "nuevo valor : $aux"
+	# return "hola"
+}
+
 func_ejecucion(){
 	echo "datos $1 $2 $3"
+	nBlancos=-1
 	case $1 in
 		"--aqui")
 			if [ "$2" = "" ]; then
@@ -60,7 +82,16 @@ func_ejecucion(){
 				if [ $2 -eq 0 ]; then
 					func_mensaje_NumeroCarpetaVacio
 				else
-					func_creandoCarpetas `pwd` $2
+					nBlancos=$(func_hayEspacios)
+					echo "  <( '_')7 Verificando si hay espacios en blanco en ruta actual"
+					# echo " Hay espacios en blancos? $nBlancos"
+					if [ $nBlancos -gt 1 ]; then
+						echo "cambiar el valor de pwd"
+						# func_creandoCarpetas `pwd` $2
+					else
+						echo "todo bien"
+						# func_creandoCarpetas `pwd` $2
+					fi					
 				fi
 			fi
 		;;
