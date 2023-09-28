@@ -4,9 +4,13 @@ clear
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ::                autor:   Kevin S. Palacios C.                        ::
 # ::                                                                     ::
-# :: fecha de creacion: 2023-09-23     || version: 1.1.0                 ::
+# :: fecha de creacion: 2023-09-23     || version: 1.3.0                 ::
 # :: fecha de modificacion: 2023-09-23 || Quien modifica: Kevin Palacios ::
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# definicion de variables globales
+DIR=".updatePC/"
+NAME="updatePC-$(date +"%Y%m%d-%H%M%S").log"
 
 # definicion de funciones
 func_header(){
@@ -17,9 +21,24 @@ func_header(){
 }
 
 func_log(){
-    local NAME="updatePC-$(date +"%Y%m%d-%H%M%S").log"
-    echo "creando log en $(pwd)" > $NAME
-    echo "$NAME"
+    cd ~
+    local band=0
+    if [ ! -d "$DIR" ]; then
+    # Take action if $DIR exists. #
+        mkdir $DIR
+        cd $DIR
+        echo "Creando carpeta ${DIR}..." > $NAME
+        echo "  Se creo log en $(pwd)" >> $NAME
+        band=1
+        # return
+        echo "$band"
+    else
+        cd $DIR
+        echo "Se creo log en $(pwd)" > $NAME
+        band=2
+        # return
+        echo "$band"
+    fi
 }
 
 func_updateApt(){
@@ -28,11 +47,12 @@ func_updateApt(){
     echo "|                APT                |"
     echo '-------------------------------------'
     sudo apt-get update
-    echo ' ---------------------------------- '
-    echo "| Se lista los programas todos los |"
-    echo "| instalados                       |"
-    echo '------------------------------------'
-    sudo apt list --installed
+    # TODO: poner con parametros para habilitar esta opcion
+    #echo ' ---------------------------------- '
+    #echo "| Se lista los programas todos los |"
+    #echo "| instalados                       |"
+    #echo '------------------------------------'
+    #sudo apt list --installed
     echo ' ---------------------------------- '
     echo "| Se lista las actualizaciones a   |"
     echo "| instalar                         |"
@@ -41,7 +61,7 @@ func_updateApt(){
     echo ' ---------------------------------- '
     echo "| Instalando las actualizaciones   |"
     echo '------------------------------------'
-    sudo apt upgrade -y
+    sudo apt-get upgrade -y
     echo ' ---------------------------------- '
     echo "| Limpiando actualizaciones        |"
     echo "| obsoletas o antiguas             |"
@@ -72,7 +92,14 @@ func_updateFlatpak(){
 
 # ejecucion del programa
 log=$(func_log)
-func_header >> $log
-func_updateApt >> $log
-func_updateFlatpak >> $log
+echo $log
+if [ $log -ge 1 ]; then
+    cd ~
+    cd $DIR/
+    pwd
+fi
+#func_log
+func_header >> $NAME
+func_updateApt >> $NAME
+func_updateFlatpak >> $NAME
 
