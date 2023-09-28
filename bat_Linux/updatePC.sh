@@ -16,12 +16,23 @@ func_header(){
 	echo ' ----------------------------------- '
 }
 
+func_log(){
+    local NAME="updatePC-$(date +"%Y%m%d-%H%M%S").log"
+    echo "creando log en $(pwd)" > $NAME
+    echo "$NAME"
+}
+
 func_updateApt(){
     echo ' -----------------------------------'
     echo "|    Actualizando programas con:    |"
     echo "|                APT                |"
     echo '-------------------------------------'
     sudo apt-get update
+    echo ' ---------------------------------- '
+    echo "| Se lista los programas todos los |"
+    echo "| instalados                       |"
+    echo '------------------------------------'
+    sudo apt list --installed
     echo ' ---------------------------------- '
     echo "| Se lista las actualizaciones a   |"
     echo "| instalar                         |"
@@ -30,12 +41,12 @@ func_updateApt(){
     echo ' ---------------------------------- '
     echo "| Instalando las actualizaciones   |"
     echo '------------------------------------'
-    sudo apt-get upgrade -y
+    sudo apt upgrade -y
     echo ' ---------------------------------- '
     echo "| Limpiando actualizaciones        |"
     echo "| obsoletas o antiguas             |"
     echo '------------------------------------'
-    sudo apt autoclean autoremove
+    sudo apt-get autoclean autoremove
 }
 
 func_updateFlatpak(){
@@ -59,10 +70,9 @@ func_updateFlatpak(){
     flatpak uninstall --unused
 }
 
-
-logsave -a contenido.txt date
-func_header
-#func_updateApt
-
-
+# ejecucion del programa
+log=$(func_log)
+func_header >> $log
+func_updateApt >> $log
+func_updateFlatpak >> $log
 
