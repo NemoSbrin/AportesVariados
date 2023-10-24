@@ -4,8 +4,8 @@ clear
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ::                autor:   Kevin S. Palacios C.                        ::
 # ::                                                                     ::
-# :: fecha de creacion: 2023-09-23     || version: 1.3.0                 ::
-# :: fecha de modificacion: 2023-09-23 || Quien modifica: Kevin Palacios ::
+# :: fecha de creacion: 2023-09-23     || version: 1.3.1                 ::
+# :: fecha de modificacion: 2023-10-24 || Quien modifica: Kevin Palacios ::
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # definicion de variables globales
@@ -87,7 +87,7 @@ func_updateFlatpak(){
     echo "| Limpiando actualizaciones        |"
     echo "| obsoletas o antiguas             |"
     echo '------------------------------------'
-    flatpak uninstall --unused
+    flatpak uninstall --unused -y
 }
 
 # ejecucion del programa
@@ -102,4 +102,6 @@ fi
 func_header >> $NAME
 func_updateApt >> $NAME
 func_updateFlatpak >> $NAME
+# TODO: Verificar que lector tiene o configurar un archivo config
+nano $NAME
 
